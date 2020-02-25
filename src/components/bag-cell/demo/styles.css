@@ -1,0 +1,44 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: inline-flex;
+    flex-flow: row;
+}
+
+button {
+    display: block;
+    width: 150px;
+    margin: 7px;
+}
+
+.sections {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+}
+
+.lateral-container{
+    width: 64vw;
+    height: 99vh;
+}
+
+.sections.node {
+    height: 34vh;
+    width: 64vw;
+}
+
+.sections.input{
+    height: 64vh;
+    width: 64vw;
+}
+
+.sections.data{
+    width: 35vw;
+    height: 99vh;
+}

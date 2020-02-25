@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bag component demo</title>
+    <script type="module">
+        import '../src/bag-component.js'
+        import '@polymer/paper-dialog/paper-dialog.js'
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <label for="width">Insert new width</label>
+        <input type="number" name="" placeholder="Width" id="width">
+        <button id="set-width">Set new width</button>
+    </div>
+
+    <div>
+        <label for="height">Insert new height</label>
+        <input type="number" name="" placeholder="height" id="height">
+        <button id="set-height">Set new height</button>
+    </div>
+
+    <bag-component></bag-component>
+
+    <paper-dialog>
+        <h3>Node data</h3>
+        <h2>Current data of node</h2>
+
+        <h3>Json of node</h3>
+        <p id="data-from-node"></p>
+
+        <h3>Status</h3>
+        <p id="status"></p>
+
+        <h3>Directions</h3>
+        <div id="directions">
+
+        </div>
+
+        <h3>Coordinates</h3>
+        <p id="coordinates"></p>
+    </paper-dialog>
+        
+    <script src="script.js"></script>
+</body>
+</html>
