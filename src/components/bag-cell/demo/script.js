@@ -90,8 +90,8 @@ buttons[1].addEventListener('click', () => {
 })
 
 buttons[2].addEventListener('click', () => {
-    if(bagCellComponent.isOccuped()){
-        paperToast.text = 'Alredy occuped';
+    if(bagCellComponent.isOccupied()){
+        paperToast.text = 'Alredy occupied';
     } else {
         paperToast.text = 'Node is empty';
     }

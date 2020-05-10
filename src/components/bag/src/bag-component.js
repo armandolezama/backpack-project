@@ -49,7 +49,7 @@ export class BagComponent extends LitElement {
         
     }
 
-    __setNodeByCoordinate(nodeContent, coordinates){
+    setNodeByCoordinate(nodeContent, coordinates){
         this.bagSpace[coordinates[0]][coordinates[1]].setNode(nodeContent);
     }
 
@@ -110,13 +110,13 @@ export class BagComponent extends LitElement {
         const firstBagCell = bagNode
         const firstSupplyCell = supply.getCurrentNode();
         let isValid = true;
-        if(firstBagCell.isOccuped()){
+        if(firstBagCell.isOccupied()){
             isValid = false;
             supply.restartAllNodes()
         } else {
             firstSupplyCell.setCoordinates(firstBagCell.getCoordinates())
             for(const direction of firstSupplyCell.getUsedDirections()){
-                if(firstBagCell.directions[direction] === undefined || firstBagCell.directions[direction].isOccuped()){
+                if(firstBagCell.directions[direction] === undefined || firstBagCell.directions[direction].isOccupied()){
                     isValid = false
                     supply.restartAllNodes()
                 } else if (isValid) {
@@ -127,13 +127,13 @@ export class BagComponent extends LitElement {
             while(!supply.nextNode() && isValid){
                 const bagCell = this.bagSpace[supply.getCurrentNode().getCoordinates()[0]][supply.getCurrentNode().getCoordinates()[1]]
                 const supplyCell = supply.getCurrentNode();
-                if(bagCell.isOccuped()){
+                if(bagCell.isOccupied()){
                     isValid = false;
                     supply.restartAllNodes()
                 } else if(isValid) {
                     supplyCell.setCoordinates(bagCell.getCoordinates())
                     for(const direction of supplyCell.getUsedDirections()){
-                        if(bagCell.directions[direction] === undefined || bagCell.directions[direction].isOccuped()){
+                        if(bagCell.directions[direction] === undefined || bagCell.directions[direction].isOccupied()){
                             isValid = false;
                             supply.restartAllNodes();
                         } else if(isValid){

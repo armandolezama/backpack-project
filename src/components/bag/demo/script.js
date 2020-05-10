@@ -34,7 +34,7 @@ setHeightButton.addEventListener('click', () => {
 const addToAllCells = cell => {
     cell.addEventListener('click', event=> {
         const bagCellComponent = event.currentTarget;
-        document.querySelector('paper-dialog').positionTarget = bagCellComponent;
+        document.querySelector('#node-data').positionTarget = bagCellComponent;
         document.querySelector('#directions').innerHTML = createHTMLDirecionts(bagCellComponent.getUsedDirections());
         document.querySelector('#status').innerHTML =  bagCellComponent.getStatus();
         document.querySelector('#data-from-node').innerHTML = JSON.stringify(bagCellComponent.node);
@@ -42,10 +42,14 @@ const addToAllCells = cell => {
         document.querySelector('#coordinates').innerHTML = `
         <h2>Coordinates in x</h2> <p>${coordinates[1]}</p>
         <h2>Coordinates in y</h2> <p>${coordinates[0]}</p>`;
-        document.querySelector('paper-dialog').open();
+        document.querySelector('#node-data').open();
     });
-    cell.addEventListener('mouseout', () => {
-        document.querySelector('paper-dialog').close();
+    document.querySelector('#node-data #close-data').addEventListener('click', () => {
+        document.querySelector('#node-data').close();
+    })
+    document.querySelector('#node-data #edit-data').addEventListener('click', () => {
+        document.querySelector('#node-data').close();
+        document.querySelector('#add-node-data').open()
     })
 };
 const addEvents = () => {

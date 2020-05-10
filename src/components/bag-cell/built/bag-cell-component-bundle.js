@@ -2420,7 +2420,7 @@
                 node: {type: Object},
                 coordinates: {type:Array},
                 status: {type:String},
-                occuped: {type:Boolean},
+                occupied: {type:Boolean},
                 setStatus: {type:Boolean},
                 directions: {type:Object}
             };
@@ -2431,7 +2431,7 @@
             this.node = {};
             this.coordinates = [];
             this.status = 'Empty';
-            this.occuped = false;
+            this.occupied = false;
             this.setStatus = true;
             this.directions = {
                 left: undefined,
@@ -2459,13 +2459,13 @@
 
         __changeStatus(){
             if(this.setStatus){
-                this.occuped = !this.occuped;
-                if(this.status === 'Occuped'){ 
+                this.occupied = !this.occupied;
+                if(this.status === 'Occupied'){ 
                     this.status = 'Empty';
                     this.shadowRoot.querySelector('div').classList.remove('full');
                     this.shadowRoot.querySelector('div').classList.add('empty');
                 } else if (this.status === 'Empty') { 
-                    this.status = 'Occuped';
+                    this.status = 'Occupied';
                     this.shadowRoot.querySelector('div').classList.remove('empty');
                     this.shadowRoot.querySelector('div').classList.add('full');}
                     this.setStatus = false;
@@ -2475,12 +2475,12 @@
             return this.status;
         }
 
-        isOccuped(){
-            return this.occuped;
+        isOccupied(){
+            return this.occupied;
         }
 
         deleteNode(){
-            if(this.occuped){
+            if(this.occupied){
                 this.node = {};
                 this.setStatus = true;
                 this.delCoordinates();
