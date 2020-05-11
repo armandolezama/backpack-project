@@ -34,11 +34,9 @@ setHeightButton.addEventListener('click', () => {
 let originCell = {};
 
 const addToAllCells = cell => {
-    cell.addEventListener('click', function(event) {
+    cell.addEventListener('click', event => {
         //Temp: Evidencia de que event.taget y this difieren según el uso de function o arroFunction 
-        console.log(event.target)
-        console.log(this)
-        if(event.target === this){
+        if(event.target === event.currentTarget){
             const bagCellComponent = event.currentTarget;
             document.querySelector('#directions').innerHTML = createHTMLDirections(bagCellComponent.getUsedDirections());
             document.querySelector('#status').innerHTML =  bagCellComponent.getStatus();
