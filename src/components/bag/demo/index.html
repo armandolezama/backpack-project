@@ -12,35 +12,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div>
-        <label for="width">Insert new width</label>
-        <input type="number" name="" placeholder="Width" id="width">
-        <button id="set-width">Set new width</button>
+    <div id="main-section">
+        <aside>
+            <div>
+                <label for="width">Insert new width</label>
+                <input type="number" name="" placeholder="Width" id="width">
+                <button id="set-width">Set new width</button>
+            </div>
+        
+            <div>
+                <label for="height">Insert new height</label>
+                <input type="number" name="" placeholder="height" id="height">
+                <button id="set-height">Set new height</button>
+            </div>
+            <bag-component></bag-component>
+        </aside>
+    
+    
+        <section id="node-data">
+            <h3>Node data</h3>
+            <h2>Current data of node</h2>
+            <h3>Json of node</h3>
+            <p id="data-from-node">
+                <h3>None data selected</h3>
+            </p>
+            <h3>Status</h3>
+            <p id="status"></p>
+            <h3>Directions</h3>
+            <div id="directions">
+            </div>
+            <h3>Coordinates</h3>
+            <p id="coordinates"></p>
+            <button id="edit-data">Edit data</button>
+        </section>
     </div>
-
-    <div>
-        <label for="height">Insert new height</label>
-        <input type="number" name="" placeholder="height" id="height">
-        <button id="set-height">Set new height</button>
-    </div>
-
-    <bag-component></bag-component>
-
-    <paper-dialog id="node-data"  no-overlap horizontal-align="left" vertical-align="top">
-        <h3>Node data</h3>
-        <h2>Current data of node</h2>
-        <h3>Json of node</h3>
-        <p id="data-from-node"></p>
-        <h3>Status</h3>
-        <p id="status"></p>
-        <h3>Directions</h3>
-        <div id="directions">
-        </div>
-        <h3>Coordinates</h3>
-        <p id="coordinates"></p>
-        <button id="close-data">Close data</button>
-        <button id="edit-data">Edit data</button>
-    </paper-dialog>
 
     <paper-dialog id="add-node-data" modal>
         <section class="sections node">
@@ -75,10 +80,10 @@
             <button>Insert node</button>
             
             <p>Use directions: </p>
-            <button>Use/Unuse right</button>
-            <button>Use/Unuse left</button>
-            <button>Use/Unuse down</button>
-            <button>Use/Unuse top</button>
+            <button>Use/Unused right</button>
+            <button>Use/Unused left</button>
+            <button>Use/Unused down</button>
+            <button>Use/Unused top</button>
             
             <p>Set new coordinates: </p>
             <label for="x-axis"></label>
@@ -88,8 +93,8 @@
             <button>Set new coordinates</button>
         </section>
         <paper-toast></paper-toast>
-        <button>Save data</button>
-        <button>Cancel</button>
+        <button id="save-data">Save data</button>
+        <button id="cancel">Cancel</button>
     </paper-dialog>
         
     <script src="script.js"></script>

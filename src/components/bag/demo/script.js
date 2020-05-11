@@ -1,5 +1,5 @@
 
-const createHTMLDirecionts = directions => {
+const createHTMLDirections = directions => {
     let html = '';
     if(directions.length === 1){
         html = `<p>${directions[0]}</p>`;
@@ -31,25 +31,27 @@ setHeightButton.addEventListener('click', () => {
     addEvents();
 });
 
+let originCell = {};
+
 const addToAllCells = cell => {
-    cell.addEventListener('click', event=> {
-        const bagCellComponent = event.currentTarget;
-        document.querySelector('#node-data').positionTarget = bagCellComponent;
-        document.querySelector('#directions').innerHTML = createHTMLDirecionts(bagCellComponent.getUsedDirections());
-        document.querySelector('#status').innerHTML =  bagCellComponent.getStatus();
-        document.querySelector('#data-from-node').innerHTML = JSON.stringify(bagCellComponent.node);
-        const coordinates = bagCellComponent.getCoordinates();
-        document.querySelector('#coordinates').innerHTML = `
-        <h2>Coordinates in x</h2> <p>${coordinates[1]}</p>
-        <h2>Coordinates in y</h2> <p>${coordinates[0]}</p>`;
-        document.querySelector('#node-data').open();
+    cell.addEventListener('click', function(event) {
+        //Temp: Evidencia de que event.taget y this difieren según el uso de function o arroFunction 
+        console.log(event.target)
+        console.log(this)
+        if(event.target === this){
+            const bagCellComponent = event.currentTarget;
+            document.querySelector('#directions').innerHTML = createHTMLDirections(bagCellComponent.getUsedDirections());
+            document.querySelector('#status').innerHTML =  bagCellComponent.getStatus();
+            document.querySelector('#data-from-node').innerHTML = JSON.stringify(bagCellComponent.node);
+            const coordinates = bagCellComponent.getCoordinates();
+            document.querySelector('#coordinates').innerHTML = `
+            <h2>Coordinates in x</h2> <p>${coordinates[1]}</p>
+            <h2>Coordinates in y</h2> <p>${coordinates[0]}</p>`;
+            originCell = cell;
+        }
     });
-    document.querySelector('#node-data #close-data').addEventListener('click', () => {
-        document.querySelector('#node-data').close();
-    })
-    document.querySelector('#node-data #edit-data').addEventListener('click', () => {
-        document.querySelector('#node-data').close();
-        document.querySelector('#add-node-data').open()
+    document.querySelector('#node-data #edit-data').addEventListener('click', event => {
+        document.querySelector('#add-node-data').open();
     })
 };
 const addEvents = () => {
@@ -59,5 +61,15 @@ const addEvents = () => {
         })
     });
 }
+
+(() => {
+    document.querySelector('#save-data').addEventListener('click', () => {
+        document.querySelector('#add-node-data').close();
+        originCell.click();
+    });
+    document.querySelector('#cancel').addEventListener('click', () => {
+        document.querySelector('#add-node-data').close()
+    });
+})()
 
 addEvents();
